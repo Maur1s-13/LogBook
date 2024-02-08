@@ -70,8 +70,31 @@ public class XML_Repository : IRepository
     public List<Entry> GetAll()
     {
         var entries = from entry in this._rootelement.Descendants("entry")
-                      select entry;
+                      select new Entry(
+
+                           Convert.ToDateTime(entry.Attribute("start").Value),
+                           Convert.ToDateTime(entry.Attribute("end").Value),
+                           (int)entry.Attribute("startkm"),
+                           (int)entry.Attribute("endkm"),
+                           entry.Attribute("numberplate").Value,
+                           entry.Attribute("from").Value,
+                           entry.Attribute("to").Value,
+                           entry.Attribute("id").Value
+
+
+                        )
+                      {
+                          Description = entry.Value,
+                        };
+
+
+        return entries.ToList<Entry>();
+
         throw new NotImplementedException();
+
+        
+        
+
 
         // Objekt erstellen
         // Liste zurückgeben
@@ -93,7 +116,31 @@ public class XML_Repository : IRepository
 
     public bool Update(Entry entry)
     {
-        throw new NotImplementedException();
+        var item = (from e in _rootelement.Descendants("entry")
+                   where (string)e.Attribute("id") == entry.Id
+                   select e).FirstOrDefault();
+
+        if (item != null)
+        {
+
+            item.SetAttributeValue("start", entry.Start.ToString());
+            item.SetAttributeValue("end", entry.End.ToString());
+            item.SetAttributeValue("startkm", entry.StartKM.ToString());
+            item.SetAttributeValue("endkm", entry.EndKM.ToString());
+            item.SetAttributeValue("numberplate", entry.NumberPlate.ToString());
+            item.SetAttributeValue("to", entry.To.ToString());
+            item.SetAttributeValue("from", entry.From.ToString());
+
+            //id nicht, da sonst das Element nicht mehr gefunden wird
+
+            return this.Save();
+
+        }
+        else
+        {
+            return false;
+        }
+
     }
 
 }
