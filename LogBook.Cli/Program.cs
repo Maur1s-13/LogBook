@@ -19,7 +19,11 @@ Entry entrySaalfelden = new Entry(
     "ZE-XY123", 
     "Zell am See", 
     "Saalfelden"
-);
+)
+{
+    Description = "Fahrt nach Saalfelden"
+}  
+    ;
 
 repository.Add(entrySaalfelden);
     
