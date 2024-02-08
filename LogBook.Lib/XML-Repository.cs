@@ -24,6 +24,8 @@ public class XML_Repository : IRepository
             _rootelement = new XElement("entries");
         }
     }
+
+
     public bool Add(Entry entry)
     {
         XElement node = new XElement("entry");
@@ -65,6 +67,29 @@ public class XML_Repository : IRepository
 
         itemsDel.Remove();
         return this.Save();
+    }
+
+    public Entry? Find(string id)
+    {
+        var item = (from entry in _rootelement.Descendants("entry")
+                    where (string)entry.Attribute("id") == id
+                    select new Entry(
+
+                           Convert.ToDateTime(entry.Attribute("start").Value),
+                           Convert.ToDateTime(entry.Attribute("end").Value),
+                           (int)entry.Attribute("startkm"),
+                           (int)entry.Attribute("endkm"),
+                           entry.Attribute("numberplate").Value,
+                           entry.Attribute("from").Value,
+                           entry.Attribute("to").Value,
+                           entry.Attribute("id").Value
+                        )
+                    {
+
+                    }
+                    ).FirstOrDefault();
+
+        return item;
     }
 
     public List<Entry> GetAll()
