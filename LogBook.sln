@@ -3,11 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31611.283
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LogBookMaui", "LogBookMaui\LogBookMaui.csproj", "{0BA8E674-02BA-4A8F-8750-2F0D716B84A6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LogBook.Lib", "LogBook.Lib\LogBook.Lib.csproj", "{70DD35C4-183E-4069-9431-4B3FB3CD904C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogBook.Lib", "LogBook.Lib\LogBook.Lib.csproj", "{70DD35C4-183E-4069-9431-4B3FB3CD904C}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogBook.Cli", "LogBook.Cli\LogBook.Cli.csproj", "{C9C51489-DE61-4D30-95EA-CDDE5FD395BF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LogBook.Cli", "LogBook.Cli\LogBook.Cli.csproj", "{C9C51489-DE61-4D30-95EA-CDDE5FD395BF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,12 +13,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{0BA8E674-02BA-4A8F-8750-2F0D716B84A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0BA8E674-02BA-4A8F-8750-2F0D716B84A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0BA8E674-02BA-4A8F-8750-2F0D716B84A6}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{0BA8E674-02BA-4A8F-8750-2F0D716B84A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0BA8E674-02BA-4A8F-8750-2F0D716B84A6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0BA8E674-02BA-4A8F-8750-2F0D716B84A6}.Release|Any CPU.Deploy.0 = Release|Any CPU
 		{70DD35C4-183E-4069-9431-4B3FB3CD904C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{70DD35C4-183E-4069-9431-4B3FB3CD904C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{70DD35C4-183E-4069-9431-4B3FB3CD904C}.Release|Any CPU.ActiveCfg = Release|Any CPU
