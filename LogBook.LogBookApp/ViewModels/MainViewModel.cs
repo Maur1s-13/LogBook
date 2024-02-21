@@ -15,16 +15,24 @@ namespace LogBook.LogBookApp.ViewModels
     {
 
         public string Header => "Fahrtenbuch";
+
+        public object Entries { get; private set; }
+
         IRepository _repository = repository;
 
-        ObservableCollection<Lib.Entry> _entries = [];
 
-
+        [ObservableProperty]
+        ObservableCollection<LogBook.Lib.Entry> ent = [];
 
         [RelayCommand]
         void LoadData()
         {
+            var entries = _repository.GetAll();
 
+            foreach (var entry in entries)
+            {
+                Ent.Add(entry);
+            }
         }
     }
 }
