@@ -22,7 +22,7 @@ namespace LogBook.LogBookApp.ViewModels
 
 
         [ObservableProperty]
-        ObservableCollection<LogBook.Lib.Entry> ent = [];
+        ObservableCollection<LogBook.Lib.Entry> _ent = [];
 
         [RelayCommand]
         void LoadData()
@@ -34,5 +34,27 @@ namespace LogBook.LogBookApp.ViewModels
                 Ent.Add(entry);
             }
         }
+
+        [RelayCommand]
+        void Add()
+        {
+            Lib.Entry entrySaalfelden = new(
+
+            DateTime.Now.AddDays(3),
+            DateTime.Now.AddDays(3).AddMinutes(20),
+            25500, 25514,
+            "ZE-XY123",
+            "Zell am See",
+            "Saalfelden");
+
+            var result = _repository.Add(entrySaalfelden);
+            if (result)
+            {
+                this.Ent.Add(entrySaalfelden);
+            }
+
+        }
+
+
     }
 }
