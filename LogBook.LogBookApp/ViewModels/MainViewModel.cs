@@ -33,7 +33,9 @@ namespace LogBook.LogBookApp.ViewModels
         DateTime _end = DateTime.Now;
 
         [ObservableProperty]
+        [NotifyCanExecuteChangedFor(nameof(AddCommand))]
         string _description = string.Empty;
+        
 
         [ObservableProperty]
         string _numberPlate = string.Empty;
@@ -65,9 +67,15 @@ namespace LogBook.LogBookApp.ViewModels
             }
         }
 
-        [RelayCommand]
+        private bool CanAdd => this.Description.Length > 0;
+
+
+
+
+        [RelayCommand(CanExecute = nameof(CanAdd))]
         void Add()
         {
+            /*
             Lib.Entry entrySaalfelden = new(
 
             DateTime.Now.AddDays(3),
@@ -76,13 +84,28 @@ namespace LogBook.LogBookApp.ViewModels
             "ZE-XY123",
             "Zell am See",
             "Saalfelden");
+            */
 
-            var result = _repository.Add(entrySaalfelden);
-            if (result)
+            Lib.Entry entry = new(this.Start, this.End, this.StartKM, this.EndKM, this.NumberPlate, this.From, this.To);
+            
+            if (this.Description.Length > 0)
             {
-                this.Ent.Add(entrySaalfelden);
+                entry.Description = this.Description;
             }
 
+            var result = _repository.Add(entry);
+
+            if (result)
+            {
+                this.Ent.Add(entry);
+                this.Description = string.Empty;
+                this.From = "";
+                this.To = "";
+                this.StartKM = this.EndKM;
+                this.EndKM = 0;
+            }
+
+            
         }
 
 
