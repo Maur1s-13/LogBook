@@ -18,7 +18,7 @@
 
     <ScrollView>
     <!-- erstes Grid (HauptGrid)-->
-    <Grid RowDefinitions="180,Auto, Auto" Margin="10">
+    <Grid RowDefinitions="180,Auto, Auto" ColumnDefinitions="*, *" Margin="10">
         <!--
         <Label Text="{Binding Header}" FontSize="Subtitle"/>
         -->
@@ -32,7 +32,10 @@
             </Grid>
             <!-- Data -->
             <CollectionView Grid.Row="1"
-                            ItemsSource="{Binding Ent}">
+                            ItemsSource="{Binding Ent}"
+                            SelectedItem="{Binding SelectedEntry}"
+                            SelectionMode="Single">
+                              
                 <CollectionView.EmptyView>
                     <Label  Padding="10" Text="Es wurde keine Fahrt hinzugefügt"></Label>
                 </CollectionView.EmptyView>
@@ -65,7 +68,7 @@
             <StackLayout Grid.Row="1" >
 
                 <Label Text="Start"/>
-                <DatePicker Format="yyy-MM-dd" Date="{Binding End}"/>
+                <DatePicker Format="yyy-MM-dd" Date="{Binding Start}"/>
 
             </StackLayout>
 
@@ -129,6 +132,9 @@
 
             </Grid>
         <!--Ende der Eingabe-->
+              
+        <!-- DETAILS-->
+        
         
         
     </Grid>

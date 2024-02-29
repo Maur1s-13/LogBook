@@ -24,6 +24,9 @@ namespace LogBook.LogBookApp.ViewModels
         [ObservableProperty]
         ObservableCollection<LogBook.Lib.Entry> _ent = [];
 
+        [ObservableProperty]
+        Lib.Entry _selectedEntry = null;
+
         #region Properties
 
         [ObservableProperty]
