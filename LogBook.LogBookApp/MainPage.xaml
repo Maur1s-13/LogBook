@@ -13,9 +13,18 @@
 
         <toolkit:EventToCommandBehavior EventName="Appearing"
                                         Command="{Binding LoadDataCommand}" />
-
+                     <!--ToDO: Add is null Converter-->
     </ContentPage.Behaviors>
 
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <toolkit:IsNullConverter x:Key="IsNullConverter"/>
+            <toolkit:IsNotNullConverter x:Key="IsNotNullConverter"/>
+            <toolkit:InvertedBoolConverter x:Key="InvertedBoolConverter"/>
+        </ResourceDictionary>
+        
+    </ContentPage.Resources>
+    
     <ScrollView>
     <!-- erstes Grid (HauptGrid)-->
     <Grid RowDefinitions="180,Auto, Auto" ColumnDefinitions="*, *" Margin="10">
@@ -53,8 +62,7 @@
         </Grid>
 
         <Button Command="{Binding AddCommand}" Grid.Row="1" Text="add demo"></Button>
-
-        
+      
          <!--Eingabe-->
         <Grid Padding="10" Grid.Row="2" ColumnSpacing="10" RowSpacing="20" 
               ColumnDefinitions="*,*" RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto">
@@ -134,7 +142,11 @@
         <!--Ende der Eingabe-->
               
         <!-- DETAILS-->
-        
+            <Grid Padding="10" IsVisible="{Binding SelectedEntry}">
+                
+                
+                                            
+            </Grid>
         
         
     </Grid>
