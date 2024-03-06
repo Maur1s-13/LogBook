@@ -142,14 +142,24 @@
         <!--Ende der Eingabe-->
               
         <!-- DETAILS-->
-            <Grid Padding="10" IsVisible="{Binding SelectedEntry}">
-                
-                
-                                            
+            <Grid Padding="10" Grid.Column="1" Grid.RowSpan="3" IsVisible="{Binding SelectedEntry, Converter={StaticResource IsNullConverter}}">
+
+                <Label HorizontalOptions="Center" FontAttributes="Bold" Text="Bitte wählen sie eine Fahrt aus"/>
+
             </Grid>
-        
-        
-    </Grid>
+            <Grid Padding="10" Grid.Column="1" Grid.RowSpan="3"  IsVisible="{Binding SelectedEntry, Converter={StaticResource IsNotNullConverter}}">
+
+                <StackLayout>
+bin 
+                    <Label FontSize="Large" TextColor="{StaticResource Primary}"
+                           Text="{Binding SelectedEntry.Description, TargetNullValue='Keine Beschreibung vorhanden!'}"/>
+
+                </StackLayout>
+
+            </Grid>
+
+
+        </Grid>
     </ScrollView>
     
     
