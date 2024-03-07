@@ -2,8 +2,9 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LogBook.LogBookApp.MainPage"
-             xmlns:viewmodels="clr-namespace:LogBook.LogBookApp.ViewModels"
+             xmlns:viewmodels="clr-namespace:LogBook.LogBookCore.ViewModels;assembly=LogBook.LogBookCore"
              x:DataType="viewmodels:MainViewModel"
+             Title="Fahrtenbuch"
              Shell.NavBarIsVisible="True"
              xmlns:model="clr-namespace:LogBook.Lib;assembly=LogBook.Lib"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
@@ -150,7 +151,7 @@
             <Grid Padding="10" Grid.Column="1" Grid.RowSpan="3"  IsVisible="{Binding SelectedEntry, Converter={StaticResource IsNotNullConverter}}">
 
                 <StackLayout>
-bin 
+
                     <Label FontSize="Large" TextColor="{StaticResource Primary}"
                            Text="{Binding SelectedEntry.Description, TargetNullValue='Keine Beschreibung vorhanden!'}"/>
 

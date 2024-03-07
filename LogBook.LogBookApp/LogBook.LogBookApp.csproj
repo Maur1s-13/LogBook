@@ -66,6 +66,13 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\LogBook.Lib\LogBook.Lib.csproj" />
+	  <ProjectReference Include="..\LogBook.LogBookCore\LogBook.LogBookCore.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="Pages\ReportPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	</ItemGroup>
 
 </Project>
