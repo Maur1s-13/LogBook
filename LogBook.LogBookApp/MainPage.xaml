@@ -28,7 +28,7 @@
     
     <ScrollView>
     <!-- erstes Grid (HauptGrid)-->
-    <Grid RowDefinitions="180,Auto, Auto" ColumnDefinitions="*, *" Margin="10">
+    <Grid RowDefinitions="180, Auto" ColumnDefinitions="*, *" Margin="10">
         <!--
         <Label Text="{Binding Header}" FontSize="Subtitle"/>
         -->
@@ -62,7 +62,7 @@
             </CollectionView>
         </Grid>
 
-        <Button Command="{Binding AddCommand}" Grid.Row="1" Text="add demo"></Button>
+        
       
          <!--Eingabe-->
         <Grid Padding="10" Grid.Row="2" ColumnSpacing="10" RowSpacing="20" 
@@ -154,6 +154,45 @@
 
                     <Label FontSize="Large" TextColor="{StaticResource Primary}"
                            Text="{Binding SelectedEntry.Description, TargetNullValue='Keine Beschreibung vorhanden!'}"/>
+
+
+                    
+
+                    <Label>
+
+                        <Label.Text>
+                            <MultiBinding StringFormat="{} von {0} nach {1}" 
+                                          TargetNullValue="Bitte wählen Sie eine Fahrt aus.">
+                                <Binding Path="SelectedEntry.From"/>
+                                <Binding Path="SelectedEntry.To"/>
+                                
+                            </MultiBinding>
+                        </Label.Text>
+                        
+                    </Label>
+
+                    <Label Margin="0, 10, 0, 0" FontSize="Medium" Text="{Binding SelectedEntry.Start, StringFormat='Start am {0:d. MMM yyyy}'}"/>
+                    <Label Margin="0,0,0,10" FontSize="Medium" Text="{Binding SelectedEntry.End, StringFormat='Ankunft am {0:d. MMM yyyy}'}"/>
+                    
+                    
+                    
+                    
+                    
+                    <Label FontSize="Small"  Text="{Binding SelectedEntry.NumberPlate, StringFormat='Kennzeichen am {0}'}"/>
+                    <Label FontSize="Small"  Text="{Binding SelectedEntry.StartKM, StringFormat='Start-KM am {0}'}"/>
+                    <Label FontSize="Small"  Text="{Binding SelectedEntry.EndKM, StringFormat='End-KM am {0}'}"/>
+
+                    <Button Margin="5" Text="Fahrt löschen" 
+                            FontSize="Small" 
+                            BackgroundColor="{StaticResource Red950}"
+                            FontAttributes="Bold"
+                            
+                            />
+
+
+
+
+
 
                 </StackLayout>
 
