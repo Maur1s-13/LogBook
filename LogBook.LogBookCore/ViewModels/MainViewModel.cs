@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using LogBook.Lib;
+using LogBook.LogBookCore.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -11,7 +12,8 @@ using System.Threading.Tasks;
 
 namespace LogBook.LogBookCore.ViewModels
 {
-    public partial class MainViewModel(IRepository repository) : ObservableObject
+    public partial class MainViewModel(IRepository repository
+        , IAlertService alertService) : ObservableObject
     {
 
         public string Header => "Fahrtenbuch";
@@ -19,6 +21,9 @@ namespace LogBook.LogBookCore.ViewModels
         public object Entries { get; private set; }
 
         IRepository _repository = repository;
+        IAlertService _alertService = alertService;
+
+
 
 
         [ObservableProperty]
@@ -59,6 +64,37 @@ namespace LogBook.LogBookCore.ViewModels
 
         #endregion
 
+
+        [RelayCommand]
+        void Delete (Lib.Entry entry)
+        {
+            Lib.Entry entryToDelete = _repository.Find(entry.Id);
+            if (entryToDelete != null)
+            {
+                var res = _repository.Delete(entryToDelete);
+                
+                if (res)
+                {
+                    this.SelectedEntry = null;
+                    this.Ent.Remove(entry);
+                    _alertService.ShowAlert("Fehler",
+                        "Der Eintrag konnte nicht gelöscht werden!");
+                }
+                else
+                {
+                    //alert not possible to delete from repository
+                    _alertService.ShowAlert("Fehler", 
+                        "Der Eintrag konnte nicht gelöscht werden!");
+                }
+            }
+
+            else
+            {
+                // alert
+                _alertService.ShowAlert("Fehler",
+                        "Der Eintrag konnte nicht gelöscht werden!");
+            }
+        }
 
 
         [RelayCommand]

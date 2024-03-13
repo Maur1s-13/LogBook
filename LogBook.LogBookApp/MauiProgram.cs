@@ -27,7 +27,7 @@ namespace LogBook.LogBookApp
             builder.Services.AddSingleton<ReportPage>();
 
             string path = FileSystem.AppDataDirectory;
-            string filename = "data.xml";
+            string filename = "data.xml";S
             string fullpath = System.IO.Path.Combine(path, filename);
             System.Diagnostics.Debug.WriteLine(path);
 

@@ -178,12 +178,14 @@
                     
                     
                     
-                    <Label FontSize="Small"  Text="{Binding SelectedEntry.NumberPlate, StringFormat='Kennzeichen am {0}'}"/>
-                    <Label FontSize="Small"  Text="{Binding SelectedEntry.StartKM, StringFormat='Start-KM am {0}'}"/>
-                    <Label FontSize="Small"  Text="{Binding SelectedEntry.EndKM, StringFormat='End-KM am {0}'}"/>
+                    <Label FontSize="Small"  Text="{Binding SelectedEntry.NumberPlate, StringFormat='Kennzeichen  {0}'}"/>
+                    <Label FontSize="Small"  Text="{Binding SelectedEntry.StartKM, StringFormat='Start-KM  {0}'}"/>
+                    <Label FontSize="Small"  Text="{Binding SelectedEntry.EndKM, StringFormat='End-KM  {0}'}"/>
 
                     <Button Margin="5" Text="Fahrt löschen" 
                             FontSize="Small" 
+                            Command="{Binding DeleteCommand}"
+                            CommandParameter="{Binding SelectedEntry}"
                             BackgroundColor="{StaticResource Red950}"
                             FontAttributes="Bold"
                             
