@@ -22,6 +22,7 @@ namespace LogBook.LogBookCore.ViewModels
 
         IRepository _repository = repository;
         IAlertService _alertService = alertService;
+        private bool _isLoaded = false;
 
 
 
@@ -77,8 +78,8 @@ namespace LogBook.LogBookCore.ViewModels
                 {
                     this.SelectedEntry = null;
                     this.Ent.Remove(entry);
-                    _alertService.ShowAlert("Fehler",
-                        "Der Eintrag konnte nicht gelöscht werden!");
+                    _alertService.ShowAlert("Erfolgreich",
+                        "Der Eintrag wurde gelöscht!");
                 }
                 else
                 {
@@ -99,13 +100,19 @@ namespace LogBook.LogBookCore.ViewModels
 
         [RelayCommand]
         void LoadData()
-        {
-            var entries = _repository.GetAll();
 
-            foreach (var entry in entries)
+        {
+            if (!_isLoaded)
             {
-                Ent.Add(entry);
+                var entries = _repository.GetAll();
+
+                foreach (var entry in entries)
+                {
+                    Ent.Add(entry);
+                }
+                _isLoaded = true;
             }
+                      
         }
 
         private bool CanAdd => this.Description.Length > 0;

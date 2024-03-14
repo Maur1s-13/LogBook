@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LogBook.LogBookApp.MainPage"
              xmlns:viewmodels="clr-namespace:LogBook.LogBookCore.ViewModels;assembly=LogBook.LogBookCore"
-             x:DataType="viewmodels:MainViewModel"
+             x:DataType="viewmodels:MainViewModel"  
              Title="Fahrtenbuch"
              Shell.NavBarIsVisible="True"
              xmlns:model="clr-namespace:LogBook.Lib;assembly=LogBook.Lib"

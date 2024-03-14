@@ -11,14 +11,17 @@ namespace LogBook.LogBookApp.Services
     {
         public async void ShowAlert(string title, string message)
         {
-            Application.Current.MainPage.Dispatcher.Dispatch(async()) { 
-                await ShowALrertAsync(title, message); } 
+            Application.Current.MainPage.Dispatcher.Dispatch(async () => {
+                await ShowALertAsync(title, message);
+            });
+
+            
         }
 
-        public Task ShowALrertAsync(string title, string message)
+        public Task ShowALertAsync(string title, string message)
         {
             return Application.Current.
-                MainPage.DisplayAlert(title, message, "OK");   
+                    MainPage.DisplayAlert(title, message, "OK");
         }
     }
 }

@@ -10,6 +10,6 @@ public interface IAlertService
 {
 
     void ShowAlert(string title, string message);
-    Task ShowALrertAsync(string title, string message);  
+    Task ShowALertAsync(string title, string message);  
 
 }
