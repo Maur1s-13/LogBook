@@ -1,6 +1,8 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
 using LogBook.Lib;
+using LogBook.LogBookCore.Messages;
 using LogBook.LogBookCore.Services;
 using System;
 using System.Collections.Generic;
@@ -17,7 +19,7 @@ namespace LogBook.LogBookCore.ViewModels
     {
 
         public string Header => "Fahrtenbuch";
-
+        
         public object Entries { get; private set; }
 
         IRepository _repository = repository;
@@ -151,6 +153,10 @@ namespace LogBook.LogBookCore.ViewModels
                 this.To = "";
                 this.StartKM = this.EndKM;
                 this.EndKM = 0;
+
+
+                WeakReferenceMessenger.Default
+                    .Send(new AddMessage(entry));
             }
 
             

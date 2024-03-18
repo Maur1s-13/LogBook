@@ -4,7 +4,8 @@
              x:Class="LogBook.LogBookApp.Pages.ReportPage"
              Title="ReportPage"
              xmlns:chart="clr-namespace:Syncfusion.Maui.Charts;assembly=Syncfusion.Maui.Charts"
-             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit">
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             >
 
     <ContentPage.Behaviors>
 
@@ -14,6 +15,28 @@
     </ContentPage.Behaviors>
 
     <Grid>
-        <chart:SfCartesianChart/>
+        <chart:SfCartesianChart>
+            <chart:SfCartesianChart.XAxes>
+                <chart:CategoryAxis>
+                    <chart:CategoryAxis.Title>
+                        <chart:ChartAxisTitle Text="Datum"/>
+                    </chart:CategoryAxis.Title>
+                </chart:CategoryAxis>
+            </chart:SfCartesianChart.XAxes>
+
+            <chart:SfCartesianChart.YAxes>
+                <chart:NumericalAxis Minimum="0" Interval="10">
+                    <chart:NumericalAxis.Title>
+                        <chart:ChartAxisTitle Text="KM"/>
+                    </chart:NumericalAxis.Title>
+                </chart:NumericalAxis>
+            </chart:SfCartesianChart.YAxes>
+
+            <chart:LineSeries XBindingPath="Start"
+                              ShowMarkers="True"
+					  ItemsSource="{Binding Ent }"
+					  YBindingPath="Distance"/>
+
+        </chart:SfCartesianChart>
     </Grid>
 </ContentPage>
