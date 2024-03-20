@@ -20,7 +20,7 @@ namespace LogBook.LogBookCore.ViewModels
 
         public string Header => "Fahrtenbuch";
         
-        public object Entries { get; private set; }
+        
 
         IRepository _repository = repository;
         IAlertService _alertService = alertService;
@@ -136,7 +136,7 @@ namespace LogBook.LogBookCore.ViewModels
             "Saalfelden");
             */
 
-            Lib.Entry entry = new(this.Start, this.End, this.StartKM, this.EndKM, this.NumberPlate, this.From, this.To);
+            Lib.Entry entry = new(this.Start, this.End, this.StartKM, this.EndKM, this.NumberPlate, this.From, this.To, false);
             
             if (this.Description.Length > 0)
             {
@@ -160,6 +160,30 @@ namespace LogBook.LogBookCore.ViewModels
             }
 
             
+        }
+
+        public void ToggleFavorite(Lib.Entry entry)
+        {
+            entry.Favorite = !entry.Favorite;   
+
+            var result = _repository.Update(entry);
+
+            if(result)
+            {
+                int pos = this.Ent.IndexOf(entry);
+
+                if (pos != 1)
+                {
+                    this.Ent[pos] = entry;
+                    _alertService.ShowAlert("Erfolg",
+                        "Der Status wurde verändert");
+                }
+                else
+                {
+                    _alertService.ShowAlert("Fehler",
+                        "Der Status konnte nicht verändert werden");
+                }
+            }
         }
 
 

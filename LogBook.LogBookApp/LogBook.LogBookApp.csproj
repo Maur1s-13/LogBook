@@ -59,6 +59,8 @@
 	<ItemGroup>
 	  <None Remove="Resources\Images\chart.svg" />
 	  <None Remove="Resources\Images\list.svg" />
+	  <None Remove="Resources\Images\star.svg" />
+	  <None Remove="Resources\Images\star_empty.svg" />
 	</ItemGroup>
 
 	<ItemGroup>

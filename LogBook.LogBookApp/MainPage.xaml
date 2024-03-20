@@ -34,11 +34,12 @@
         -->
         <Grid RowDefinitions="Auto,*" Grid.Row="0">
             <!-- Header -->
-            <Grid ColumnDefinitions="100,2*,*,*">
-                <Label FontSize="Caption" FontAttributes="Bold" Text="Datum" Padding="5"/>
-                <Label FontSize="Caption" FontAttributes="Bold" Grid.Column="1" Text="Beschreibung" Padding="5"/>
-                <Label FontSize="Caption" FontAttributes="Bold" Grid.Column="2" Text="Von" Padding="5"/>
-                <Label FontSize="Caption" FontAttributes="Bold" Grid.Column="3" Text="Nach" Padding="5"/>
+            <Grid ColumnDefinitions="80, 100,2*,*,*">
+                <Label FontSize="Caption" FontAttributes="Bold" Grid.Column="0" Text="Markierung" Padding="5"/>
+                <Label FontSize="Caption" FontAttributes="Bold" Grid.Column="1" Text="Datum" Padding="5"/>
+                <Label FontSize="Caption" FontAttributes="Bold" Grid.Column="2" Text="Beschreibung" Padding="5"/>
+                <Label FontSize="Caption" FontAttributes="Bold" Grid.Column="3" Text="Von" Padding="5"/>
+                <Label FontSize="Caption" FontAttributes="Bold" Grid.Column="4" Text="Nach" Padding="5"/>
             </Grid>
             <!-- Data -->
             <CollectionView Grid.Row="1"
@@ -51,11 +52,30 @@
                 </CollectionView.EmptyView>
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="model:Entry">
-                        <Grid ColumnDefinitions="100,2*,*,*">
-                            <Label  Text="{Binding Start, StringFormat='{0: yyyy-MM-dd}'}" Padding="5"/>
-                            <Label  Grid.Column="1"  Text="{Binding Description}" Padding="5"/>
-                            <Label  Grid.Column="2"  Text="{Binding From}" Padding="5"/>
-                            <Label  Grid.Column="3"  Text="{Binding To}" Padding="5"/>
+                        <Grid ColumnDefinitions="80,100,2*,*,*">
+
+                                <Image VerticalOptions="Center"
+                                       Source="star.png"
+                                       IsVisible="{Binding Favorite}"
+                                       HeightRequest="15"
+                                       HorizontalOptions="Center">
+                                    
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer>
+                                            
+                                        </TapGestureRecognizer>
+                                    </Image.GestureRecognizers>
+                                    
+                                  
+                                    
+                                    
+                                </Image>
+                            
+                            
+                                <Label  Grid.Column="1" Text="{Binding Start, StringFormat='{0: yyyy-MM-dd}'}" Padding="5"/>
+                                <Label  Grid.Column="2"  Text="{Binding Description}" Padding="5"/>
+                            <Label  Grid.Column="3"  Text="{Binding From}" Padding="5"/>
+                            <Label  Grid.Column="4"  Text="{Binding To}" Padding="5"/>
                         </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
