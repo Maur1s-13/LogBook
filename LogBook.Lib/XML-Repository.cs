@@ -53,6 +53,9 @@ public class XML_Repository : IRepository
         var toAttrib = new XAttribute("to", entry.To.ToString());
         node.Add(toAttrib);
 
+        var favoriteAttrib = new XAttribute("favorite", entry.Favorite.ToString());
+        node.Add(favoriteAttrib);
+
         node.Add(entry.Description.ToString());
         _rootelement.Add(node);
 
@@ -82,7 +85,9 @@ public class XML_Repository : IRepository
                            entry.Attribute("numberplate").Value,
                            entry.Attribute("from").Value,
                            entry.Attribute("to").Value,
+                           Convert.ToBoolean(entry.Attribute("favorite").Value),
                            entry.Attribute("id").Value
+                           
                         )
                     {
 
@@ -104,6 +109,7 @@ public class XML_Repository : IRepository
                            entry.Attribute("numberplate").Value,
                            entry.Attribute("from").Value,
                            entry.Attribute("to").Value,
+                           Convert.ToBoolean(entry.Attribute("favorite").Value),
                            entry.Attribute("id").Value
 
 
@@ -155,6 +161,7 @@ public class XML_Repository : IRepository
             item.SetAttributeValue("numberplate", entry.NumberPlate.ToString());
             item.SetAttributeValue("to", entry.To.ToString());
             item.SetAttributeValue("from", entry.From.ToString());
+            item.SetAttributeValue("favorite", entry.Favorite.ToString());
 
             //id nicht, da sonst das Element nicht mehr gefunden wird
 
