@@ -61,17 +61,32 @@
                                        HorizontalOptions="Center">
                                     
                                     <Image.GestureRecognizers>
-                                        <TapGestureRecognizer>
-                                            
-                                        </TapGestureRecognizer>
+                                        <TapGestureRecognizer Command="{Binding Source={
+                                            RelativeSource AncestorType={x:Type viewmodels:MainViewModel
+                                            }
+                                            }, Path=ToggleFavoriteCommand}"
+                                                              CommandParameter="{Binding .}"/>
                                     </Image.GestureRecognizers>
                                     
-                                  
-                                    
-                                    
+                                                                                              
                                 </Image>
-                            
-                            
+
+                                <Image VerticalOptions="Center"
+                                   Source="star_empty.png"
+                                    IsVisible="{Binding Favorite, Converter={StaticResource InvertedBoolConverter }}"
+                                    HeightRequest="15"
+                                    HorizontalOptions="Center">
+
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding Source={
+                                           RelativeSource AncestorType={x:Type viewmodels:MainViewModel
+                                            }
+                                            }, Path=ToggleFavoriteCommand}"
+                                            CommandParameter="{Binding .}"/>
+                                    </Image.GestureRecognizers>
+                                </Image>
+
+
                                 <Label  Grid.Column="1" Text="{Binding Start, StringFormat='{0: yyyy-MM-dd}'}" Padding="5"/>
                                 <Label  Grid.Column="2"  Text="{Binding Description}" Padding="5"/>
                             <Label  Grid.Column="3"  Text="{Binding From}" Padding="5"/>

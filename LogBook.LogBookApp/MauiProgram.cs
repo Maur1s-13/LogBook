@@ -33,6 +33,7 @@ namespace LogBook.LogBookApp
             string path = FileSystem.AppDataDirectory;
             string filename = "data.xml";
             string fullpath = System.IO.Path.Combine(path, filename);
+            System.Diagnostics.Debug.WriteLine("Pfad:");
             System.Diagnostics.Debug.WriteLine(path);
 
             builder.Services.AddSingleton<IRepository>(new XML_Repository(fullpath));

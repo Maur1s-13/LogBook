@@ -162,6 +162,7 @@ namespace LogBook.LogBookCore.ViewModels
             
         }
 
+        [RelayCommand]
         public void ToggleFavorite(Lib.Entry entry)
         {
             entry.Favorite = !entry.Favorite;   
