@@ -8,6 +8,15 @@ namespace LogBook.Lib;
 
 public class csvRepository : IRepository
 {
+    // title, money
+    // Test, 23.22
+    // Probe, 14.11
+
+    public csvRepository()
+    {
+            
+    }
+
     public bool Add(Entry entry)
     {
         throw new NotImplementedException();

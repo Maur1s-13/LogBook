@@ -31,12 +31,13 @@ namespace LogBook.LogBookApp
             builder.Services.AddSingleton<ReportPage>();
 
             string path = FileSystem.AppDataDirectory;
-            string filename = "data.xml";
+            //string filename = "data.xml";
+            string filename = "data.sqlite";
             string fullpath = System.IO.Path.Combine(path, filename);
             System.Diagnostics.Debug.WriteLine("Pfad:");
             System.Diagnostics.Debug.WriteLine(path);
 
-            builder.Services.AddSingleton<IRepository>(new XML_Repository(fullpath));
+            builder.Services.AddSingleton<IRepository>(new SqliteRepository(fullpath));
             builder.Services.AddSingleton<IAlertService, AlertService>();
 
 #if DEBUG
