@@ -53,7 +53,10 @@
             this.Favorite = favorite;
         }
 
-
+        public Entry()
+        {
+                
+        }
         public override string ToString()
         {
             return string.Format("{0} nach {1}", From, To);
